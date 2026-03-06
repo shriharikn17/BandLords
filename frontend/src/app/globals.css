@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0b0b0b;
+  --color-foreground: #ffffff;
+  --color-accent: #ff0033;
+  --color-accent-dark: #cc0029;
+  --color-gray-dark: #1a1a1a;
+  --color-gray-light: #cccccc;
+
+  --font-sans: 'Impact', 'Arial Black', sans-serif;
+  --font-body: 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+  }
+}
+
+/* Brutalist utilities */
+@layer components {
+  .btn-brutal {
+    @apply bg-accent text-white font-sans text-xl uppercase px-6 py-3 border-2 border-transparent transition-all;
+    &:hover {
+      @apply bg-black border-accent text-accent;
+    }
+  }
+
+  .card-brutal {
+    @apply bg-gray-dark border border-gray-800 p-6;
+    box-shadow: 8px 8px 0px 0px rgba(255, 0, 51, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px 0px rgba(255, 0, 51, 0.5);
+    }
+  }
+
+  .input-brutal {
+    @apply bg-black border-2 border-gray-700 text-white p-3 font-body focus:border-accent focus:outline-none w-full;
+  }
+}

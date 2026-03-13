@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
+import { CartProvider } from '@/context/CartContext';
 
 export const metadata: Metadata = {
   title: 'BandLords | The Underground Rock & Metal Scene',
@@ -23,14 +24,18 @@ export default function RootLayout({
             <nav className="flex items-center gap-6 md:gap-8 font-sans text-xl font-bold">
               <Link href="/bands" className="hover:text-accent hover:underline decoration-4 underline-offset-8 transition-all uppercase">Bands</Link>
               <Link href="/events" className="hover:text-accent hover:underline decoration-4 underline-offset-8 transition-all uppercase">Events</Link>
+              <Link href="/merch" className="hover:text-accent hover:underline decoration-4 underline-offset-8 transition-all uppercase">Merch</Link>
+              <Link href="/cart" className="hover:text-accent hover:underline decoration-4 underline-offset-8 transition-all uppercase text-accent">Cart</Link>
               <Link href="/login" className="px-6 py-2 bg-white text-black hover:bg-accent hover:text-white transition-colors uppercase">Login</Link>
             </nav>
           </div>
         </header>
 
-        <main className="flex-grow container mx-auto px-4 py-12">
-          {children}
-        </main>
+        <CartProvider>
+          <main className="flex-grow container mx-auto px-4 py-12">
+            {children}
+          </main>
+        </CartProvider>
 
         <footer className="border-t-4 border-gray-800 mt-20 bg-black pt-16 pb-8">
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
